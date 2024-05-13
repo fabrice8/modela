@@ -1,0 +1,139 @@
+:root {
+  --me-primary-color: rgba(12, 0, 0);
+  --me-secondary-color: rgb(88, 88, 88);
+  --me-primary-color-transparent: rgba(12, 0, 0, .4);
+  --me-secondary-color-transparent: rgb(88, 88, 88, .9);
+  --me-secondary-color-blur:  hsla(150, 1%, 100%, 0.1);
+  --me-primary-color-fade: rgba(12, 0, 0, .12);
+  --me-secondary-color-fade: rgba(220, 220, 220, .13);
+  --me-font: 16px helvetica;
+  --me-icon-size: 1.3rem;
+  --me-placeholder-height: 1.3rem;
+  --me-placeholder-radius: 3px;
+  --me-border-radius: 5px;
+  --me-trigger-text-color: #fff;
+  --me-disabled-text-color: #9e9e9e;
+  --me-active-transition: 300ms;
+  --me-backdrop-filter: blur(8px);
+}
+
+/* .modela {
+  position: absolute;
+  height: 100%;
+  z-index: 300;
+} */
+.modela * {
+  font: var(--me-font);
+}
+.--modela-button {
+  background-color: var(--me-primary-color);
+  color: #fff;
+  padding: .5rem 1.3rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+[mv-placeholder="active"]:hover,
+p[mv-active="true"]:not([mv-placeholder]),
+span[mv-active="true"]:not([mv-placeholder]) {
+  background: var(--me-primary-color-fade);
+  border-radius: var(--me-placeholder-radius);
+  transition: var(--me-active-transition);
+}
+[mv-placeholder] {
+  width: 100%;
+  height: var(--me-placeholder-height);
+}
+
+.--modela-store {
+  position: fixed;
+  left: 0;
+  top: calc(50% - 40px);
+  margin: 2px;
+  padding: 20px 22px 20px 2px;
+  border-radius: 0 100px 100px 0;
+  transition: var(--me-active-transition);
+}
+.--modela-store:hover { background-color: var(--me-primary-color-fade); }
+.--modela-store .bx {
+  padding: 5px 0;
+  cursor: pointer;
+  color: var(--me-trigger-text-color);
+  border-radius: var(--me-border-radius);
+  background-color: var(--me-primary-color-transparent);
+  backdrop-filter: var(--me-backdrop-filter);
+  font-size: var(--me-icon-size)!important;
+}
+
+.--modela-globals {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  margin: .9rem;
+}
+
+/* Editing panels */
+[mv-control-panel],
+[mv-control-block] > [options="tabs"] {
+  list-style: none;
+  margin: 0;
+  padding: 1px;
+  border-radius: var(--me-border-radius);
+  background-color: var(--me-secondary-color-transparent);
+  backdrop-filter: var(--me-backdrop-filter);
+  transition: var(--me-active-transition);
+}
+[mv-control-panel],
+[mv-control-panel] > div,
+[mv-control-block] > [options="tabs"] {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+[mv-control-panel] li,
+[mv-control-block] > [options="tabs"] > li {
+  padding: 4px 6px;
+  margin: 4px;
+  cursor: pointer;
+  color: var(--me-trigger-text-color);
+  border-radius: var(--me-border-radius);
+  transition: var(--me-active-transition);
+}
+[mv-control-panel] li.disabled,
+[mv-control-block] > [options="tabs"] > li.disabled {
+  color: var(--me-disabled-text-color);
+}
+[mv-control-panel] li:hover,
+[mv-control-panel] [dismiss],
+[mv-control-block] > [options="tabs"] > li:hover {
+  background-color: var(--me-secondary-color-fade);
+}
+[mv-control-panel] li .bx,
+[mv-control-block] > [options="tabs"] > li .bx {
+  font-size: var(--me-icon-size)!important;
+}
+[mv-control-panel] [options="sub"],
+[mv-control-panel] [options="extra"] {
+  display: none;
+}
+[mv-control-panel] [options="sub"].active,
+[mv-control-panel] [options="extra"].active {
+  display: inherit;
+}
+
+[mv-control-block] {
+  position: absolute;
+  display: none;
+  right: 0;
+  bottom: 0;
+  min-width: 20vw;
+  min-height: 75vh;
+  max-height: 90vh;
+  overflow: hidden;
+  color: var(--me-trigger-text-color);
+  border-radius: 20px;
+  transition: var(--me-active-transition);
+  backdrop-filter: var(--me-backdrop-filter);
+  background-color: var(--me-secondary-color-transparent);
+}
