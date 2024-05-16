@@ -4,19 +4,23 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
-    <link rel="stylesheet" href="../src/lib/boxicons.css" type="text/css"/>
+    <link rel="stylesheet" href="../src/lib/boxicons-2.0.9.min.css" type="text/css"/>
     <link rel="stylesheet" href="../src/styles.css" type="text/css"/>
     <link rel="stylesheet" href="styles.css" type="text/css"/>
   </head>
   <body style="margin:0;">
-    <div id="editor">
-      <!-- <span>I'm an inline text</span>
-      <div mv-placeholder="true" data-modela-key="12345678900"></div>
-      <p class="view" style="position: absolute; top: 40vh; left: 20vh">I'm a paragraph text <span>Hello there</span></p>
+    <div class="editor">
+      <span>I'm an inline text</span>
+      <div mv-placeholder="true" mv-key="12345678900"></div>
+
+      <p class="view" style="position: absolute; top: 45vh; left: 40vw">I'm a paragraph text <span>Hello there</span></p>
+      <p class="view" style="position: absolute; top: 95vh; left: 80vw">Check me here</p>
       <button>Click me</button>
 
-      <div data-modela-key="1234567890"></div> -->
-      <!-- <img src="./images/twins.jpeg"> -->
+      <div id="box" style="width:100px;height:100px;background-color:aquamarine;"></div>
+
+      <div mv-key="1234567890"></div>
+      <img src="./images/twins.jpeg">
     </div>
 
     <button id="add-card">Add Card</button>
@@ -40,7 +44,7 @@
         attributes: {
           header: true
         },
-        styles: {},
+        styles(){},
         actions: {},
         render( props, global ){
           const
@@ -103,17 +107,17 @@
             }
           }
 
-          header = `<div class="card-header">${global.define( headerProps )}</div>`,
-          footer = `<div class="card-footer">${global.define( footerProps )}</div>`,
+          header = `<div class="card-header">${global.defineProperties( headerProps )}</div>`,
+          footer = `<div class="card-footer">${global.defineProperties( footerProps )}</div>`,
 
           { primaryColor, borderWidth } = global.styles
 
           return `<div class="card bg-primary-${primaryColor.value}">
-            ${global.define( cardProps )}
+            ${global.defineProperties( cardProps )}
 
             <div class="card-content">
               ${props.attributes.header ? header : ''}
-              <div class="card-body">${global.define( bodyProps )}</div>
+              <div class="card-body">${global.defineProperties( bodyProps )}</div>
               ${props.attributes.footer ? footer : ''}
             </div>
           </div>`
@@ -134,6 +138,7 @@
            */
           console.log( e )
         },
+        styles(){},
         translation: {
           en: {
             'Card Header': 'Card Header',
@@ -148,9 +153,9 @@
         }
       })
 
-      editor.mount('editor')
+      editor.mount('.editor')
 
-      setTimeout( () => editor.propagateUpdate('global.styles', { fontSize: '20px' }), 3000 )
+      // setTimeout( () => editor.propagateUpdate('global.styles', { fontSize: '20px' }), 3000 )
       $('#add-card').on('click', () => editor.views.add('card', '1234567890') )
     </script>
   </body>
