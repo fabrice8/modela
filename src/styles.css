@@ -8,6 +8,7 @@
   --me-secondary-color-fade: rgba(220, 220, 220, .13);
   --me-font: 16px helvetica;
   --me-icon-size: 1.3rem;
+  --me-icon-size-2: 1.6rem;
   --me-placeholder-height: 1.3rem;
   --me-placeholder-radius: 3px;
   --me-border-radius: 5px;
@@ -24,7 +25,9 @@
   z-index: 2001;
   background-color: black;
 }
-#modela * {
+#modela *,
+[mv-panel],
+[mv-toolbar] {
   font: var(--me-font);
 }
 #modela .modela-button {
@@ -60,7 +63,9 @@
   border-radius: 0 100px 100px 0;
   transition: ease-in-out var(--me-active-transition);
 }
-#modela .modela-store > [show]:hover { background-color: var(--me-primary-color-fade); }
+#modela .modela-store > [show]:hover { 
+  background-color: var(--me-primary-color-fade);
+}
 #modela .modela-store > [show] .bx {
   padding: 5px 0;
   cursor: pointer;
@@ -80,6 +85,7 @@
 }
 
 /* Editing toolbars */
+[mv-panel],
 [mv-toolbar].editing {
   position: absolute;
   width: 0px;
@@ -183,4 +189,63 @@
   backdrop-filter: var(--me-backdrop-filter);
   background-color: var(--me-primary-color-fade);
   box-shadow: var(--me-box-shadow);
+}
+
+/* Editing panels */
+[mv-panel] {
+  left: 50px; top: 50px;
+}
+[mv-panel] > div {
+  width: 20rem;
+  min-height: 10rem;
+  border-radius: var(--me-border-radius);
+  background-color: white;
+  backdrop-filter: var(--me-backdrop-filter);
+  box-shadow: var(--me-box-shadow);
+  transition: var(--me-active-transition);
+}
+[mv-panel] > div > .label {
+  cursor: default;
+  padding: 10px;
+  font: var(--me-font);
+  color: var(--me-primary-color-transparent);
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+[mv-panel] > div > .label .bx {
+  font-size: var(--me-icon-size-2)!important;
+}
+[mv-panel] > div > .label label {
+  padding-left: 10px;
+}
+[mv-panel] > div > [options="tabs"] {
+  list-style: none;
+  margin: 0;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  border-bottom: 1px solid var(--me-primary-color-fade);
+}
+[mv-panel] > div > [options="tabs"] > li {
+  padding: 4px 6px;
+  margin: 4px;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  color: var(--me-secondary-color);
+  border-radius: var(--me-border-radius);
+  transition: var(--me-active-transition);
+}
+[mv-panel] > div > [options="tabs"] > li .bx {
+  font-size: var(--me-icon-size-2)!important;
+}
+[mv-panel] > div > [options="tabs"] > li.active,
+[mv-panel] > div > [options="tabs"] > li:not(.label,.disabled):hover {
+  background-color: var(--me-primary-color-fade);
+}
+[mv-panel] > div > [options="tabs"] [dismiss] {
+  position: absolute;
+  right: 0;
 }

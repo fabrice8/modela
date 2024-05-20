@@ -121,6 +121,7 @@
    * 
    * NOTE: Only custom attributes
    */
+  CONTROL_PANEL_SELECTOR = 'mv-panel',
   CONTROL_TOOLBAR_SELECTOR = 'mv-toolbar',
   CONTROL_BLOCK_SELECTOR = 'mv-control-block',
 
@@ -343,6 +344,33 @@
                   </div>
                 </ul>`: ''
           }
+        </div>
+      </div>`
+    },
+
+    createPanel( key, props, editin = false ){
+
+      return `<div ${CONTROL_PANEL_SELECTOR}="${key}">
+        <div>
+          <div class="label">
+            <i class="bx bx-paragraph"></i>
+            <label>Paragraph</label>
+          </div>
+
+          <ul options="tabs">
+            <li class="active"><i class="bx bx-edit-alt"></i></li>
+            <li ><i class="bx bxs-brush"></i></li>
+            <li><i class="bx bxs-zap"></i></li>
+
+            <!-- <li><i class="bx bx-accessibility"></i></li> -->
+            <li><i class="bx bx-info-circle"></i></li>
+            <li><i class="bx bx-dots-horizontal-rounded"></i></li>
+            <li dismiss="global"><i class="bx bx-x"></i></li>
+          </ul>
+          
+          <div class="body">
+            
+          </div>
         </div>
       </div>`
     }
@@ -1581,8 +1609,7 @@
         return
       }
       
-      const 
-
+      const
       storeBlock = `<div mv-control-block="store">
       </div>`,
       /**
@@ -1604,6 +1631,7 @@
         <li dismiss="global"><i class="bx bx-x"></i></li>
       </ul>`,
       globalBody = `<div>
+
       </div>`,
       globalControlBlock = `<div mv-control-block="global">
         ${globalTabs}
@@ -1644,6 +1672,8 @@
 
       // Enable modela controls
       this.controls.enable( this.views )
+
+      $root.prepend( BlockFactory.createPanel('1234567890', {}) )
     }
 
     propagateUpdate( type, updates, applyOnly = false ){

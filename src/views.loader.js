@@ -335,9 +335,7 @@
   DefaultViews.button = {
     name: 'button',
     node: 'button',
-    attributes: {},
-    styles: {},
-    actions: {}
+    attributes: {}
   }
 
   window.ModelaViewLoader = ( modela, list = [] ) => {
